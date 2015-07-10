@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html ng-app="apiMock">
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+		<!--<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>-->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.2/angular.min.js"> type="text/javascript"</script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.2/angular-sanitize.min.js"> type="text/javascript"</script>
+		<script src="app.js"> type="text/javascript"</script>
+		<link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.0/material.indigo-pink.min.css">
+		<script src="https://storage.googleapis.com/code.getmdl.io/1.0.0/material.min.js"></script>
+		<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+		<link rel="stylesheet" href="style.css" />
+	</head>
+	<body ng-controller="apiMockController">
+		<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+			<header class="mdl-layout__header">
+				<div class="mdl-layout__header-row">
+			  		<!-- Title -->
+			  		<span class="mdl-layout-title">apiMock</span>
+			  		<!-- Add spacer, to align navigation to the right -->
+			  		<div class="mdl-layout-spacer"></div>
+			  		<!-- Navigation. We hide it in small screens. -->
+			  		<nav class="mdl-navigation mdl-layout--large-screen-only">
+						<a class="mdl-navigation__link" href="http://github.com/improvi/apimock">View on Github</a>
+						<a class="mdl-navigation__link" href="http://improvi.in">Improvi Technologies</a>
+			  		</nav>
+				</div>
+		  	</header>
+			<main class="mdl-layout__content">
+				<div style="max-width: 980px; margin: 20px auto;">
+						<div class="mdl-textfield mdl-js-textfield textfield-demo" style="width: 100%;">
+							<input class="mdl-textfield__input" type="text" id="endpoint" ng-model="endpoint" />
+							<label class="mdl-textfield__label" for="endpoint">API Endpoint...</label>
+						</div>
+						<div class="row padded">
+							<label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="option-1">
+  								<input type="radio" id="option-1" class="mdl-radio__button" name="options" value="GET" ng-model="requestType" />
+  								<span class="mdl-radio__label">GET</span>
+							</label>
+							<label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="option-2">
+  								<input type="radio" id="option-2" class="mdl-radio__button" name="options" value="POST" ng-model="requestType" />
+  								<span class="mdl-radio__label">POST</span>
+							</label>
+						</div>
+						<div class="demo-grid-ruler mdl-grid">
+							<div class="mdl-cell mdl-cell--6-col">
+								<button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" ng-click="addHeaderItem()">Add Header</button>
+								<div class="card-item" ng-repeat="header in headers">
+									<div class="inner">
+										<div class="title">
+											<input class="input-control" type="text" id="header-key-{{$index}}" ng-model="header.key" placeholder="Key" />
+										</div>
+										<div class="description">
+											<input class="input-control" type="text" id="header-value-{{$index}}" ng-model="header.value" placeholder="Value" />
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="mdl-cell mdl-cell--6-col">
+								<button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" ng-click="addPayloadItem()">Add Payload</button>
+								<div class="card-item" ng-repeat="item in payload">
+									<div class="inner">
+										<div class="title">
+											<input class="input-control" type="text" id="payload-key-{{$index}}" ng-model="item.key" placeholder="Key" />
+										</div>
+										<div class="description">
+											<input class="input-control" type="text" id="payload-value-{{$index}}" ng-model="item.value" placeholder="Value" />
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					<div class="row padded small">
+						<button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" ng-click="sendRequest()">Send Request</button>
+						<button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" ng-click="clearCache()">Clear Cache</button>
+					</div>
+					<div class="row padded" ng-show="response">
+						<div class="card-item">
+							<div class="inner">
+								<div class="title">Response</div>
+								<code>{{response}}</code>
+							</div>
+						</div>
+					</div>
+					
+				</div>
+			</main>
+		</div>
+	</body>
+</html>

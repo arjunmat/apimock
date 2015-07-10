@@ -1,0 +1,32 @@
+.row.padded {
+	padding: 10px 0;
+	margin: 10px 0;
+}
+
+.row.padded.small {
+	padding: 0px 0;
+	margin: 5px 0;
+}
+
+.card-item {
+	width: 100%;
+	border: 1px solid #ddd;
+	margin: 10px 0;
+}
+
+.card-item .inner {
+	padding: 10px;
+}
+
+.card-item .title {
+	border-bottom: 1px solid #ddd;
+}
+
+.input-control {
+	display: block;
+  	width: 100%;
+  	border: 0;
+  	outline: none;
+  	font-size: 13px;
+  	line-height: 26px;
+}
