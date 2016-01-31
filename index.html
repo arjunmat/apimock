@@ -2,16 +2,15 @@
 <html ng-app="apiMock">
 	<head>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>apiMock - Test out your APIs</title>
 		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
-		<!--<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>-->
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.2/angular.min.js"> type="text/javascript"</script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.2/angular-sanitize.min.js"> type="text/javascript"</script>
-		<script src="app.js"> type="text/javascript"</script>
-		<link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.0/material.indigo-pink.min.css">
-		<script src="https://storage.googleapis.com/code.getmdl.io/1.0.0/material.min.js"></script>
 		<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
 		<link rel="stylesheet" href="style.css" />
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.2/angular.min.js"> type="text/javascript"</script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.2/angular-sanitize.min.js"> type="text/javascript"</script>
+		<link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.0/material.indigo-pink.min.css">
+		<script src="https://storage.googleapis.com/code.getmdl.io/1.0.0/material.min.js"></script>
+		<script src="app.js"> type="text/javascript"</script>
 	</head>
 	<body ng-controller="apiMockController">
 		<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
@@ -30,6 +29,14 @@
 		  	</header>
 			<main class="mdl-layout__content">
 				<div style="max-width: 980px; margin: 20px auto;">
+					<div class="desc-text">
+						apiMock is a simple tool to emulate API calls. This is a client side tool and requires CORS enabled on your APIs. apiMock can also be used for local testing.
+						<ul>
+							<li>Client based - enables local testing</li>
+							<li>Caching enabled via localStorage</li>
+							<li>GET and POST requests supported</li>
+						</ul>
+					</div>
 						<div class="mdl-textfield mdl-js-textfield textfield-demo" style="width: 100%;">
 							<input class="mdl-textfield__input" type="text" id="endpoint" ng-model="endpoint" />
 							<label class="mdl-textfield__label" for="endpoint">API Endpoint...</label>
@@ -42,6 +49,14 @@
 							<label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="option-2">
   								<input type="radio" id="option-2" class="mdl-radio__button" name="options" value="POST" ng-model="requestType" />
   								<span class="mdl-radio__label">POST</span>
+							</label>
+							<label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="option-3">
+  								<input type="radio" id="option-3" class="mdl-radio__button" name="options" value="PUT" ng-model="requestType" />
+  								<span class="mdl-radio__label">PUT</span>
+							</label>
+							<label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="option-4">
+  								<input type="radio" id="option-4" class="mdl-radio__button" name="options" value="DELETE" ng-model="requestType" />
+  								<span class="mdl-radio__label">DELETE</span>
 							</label>
 						</div>
 						<div class="demo-grid-ruler mdl-grid">
@@ -80,7 +95,7 @@
 						<div class="card-item">
 							<div class="inner">
 								<div class="title">Response</div>
-								<code>{{response}}</code>
+								<code style="word-break: break-all;">{{response}}</code>
 							</div>
 						</div>
 					</div>

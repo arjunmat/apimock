@@ -58,13 +58,12 @@ angular.module('apiMock', ['ngSanitize'])
 					payload[item.key] = item.value;
 			});
 			
-			
-			
 			$http({
 				method: $scope.requestType
 				,url: $scope.endpoint
 				,headers: headers
 				,data: payload
+				,dataType: 'json'
 			}).success(function (resp) {
 				$scope.response = resp;
 			}).error(function (err) {
